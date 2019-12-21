@@ -1,4 +1,4 @@
 //vue.confing.js
 module.exports = {
-  publicPath: process.env.NODE_ENV === 'production' ? '/eric-project/' : '/'
+  publicPath: process.env.NODE_ENV === 'production' ? '/KKBOX-Sample/' : '/'
 };

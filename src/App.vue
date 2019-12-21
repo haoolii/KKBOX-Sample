@@ -1,32 +1,29 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <appNav></appNav>
+
+    <appHeader></appHeader>
+    <rank></rank>
+    <playList></playList>
+    <styleList></styleList>
+    <modal></modal>
+    <appFooter></appFooter>
   </div>
 </template>
-
-<style lang="scss">
+<script>
+import appNav from './views/Nav.vue';
+import playList from './components/PlayList.vue';
+import rank from './components/Rank.vue';
+import styleList from './components/StyleList.vue';
+import modal from './components/Modal.vue';
+import appHeader from './views/Header.vue';
+import appFooter from './views/Footer.vue';
+export default {
+  components: { modal, appNav, playList, styleList, rank, appHeader, appFooter }
+};
+</script>
+<style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  background-color: #080a1e;
 }
 </style>

@@ -3,23 +3,25 @@
     <div>
       <p>KKBox API Sample</p>
       <a href data-toggle="modal" data-target="#exampleModalCenter">立即試聽</a>
-
-      <div
-        class="modal fade"
-        id="exampleModalCenter"
-        tabindex="-1"
-        role="dialog"
-        aria-labelledby="exampleModalCenterTitle"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="title">
-              <h5 class>立即試聽</h5>
-            </div>
-
-            <iframe src="https://widget.kkbox.com/v1/?id=DZrC8m29ciOFY2JAm3&type=playlist"></iframe>
+    </div>
+    <div
+      class="modal fade"
+      id="exampleModalCenter"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="title">
+            <h5 class>立即試聽</h5>
           </div>
+
+          <iframe
+            frameborder="0"
+            src="https://widget.kkbox.com/v1/?id=DZni8m29ciOFbRxTJq&type=playlist&terr=TW}&lang=TC"
+          ></iframe>
         </div>
       </div>
     </div>
@@ -64,8 +66,10 @@ a:hover {
   text-decoration: none;
   background: linear-gradient(to bottom right, #009bdf, #009bdf);
 }
-.title {
-  height: 50px;
+iframe {
+  width: 450px;
+  border: 0;
+  height: 500px;
 }
 h5 {
   line-height: 50px;
@@ -73,12 +77,13 @@ h5 {
   letter-spacing: 2px;
 }
 .modal-content {
-  width: auto;
   height: auto;
+  width: auto;
   background-color: #7a3d96;
+  margin: -6px;
+  padding: 0px;
 }
-iframe {
-  width: 450px;
-  border: 0;
+.title {
+  height: 50px;
 }
 </style>

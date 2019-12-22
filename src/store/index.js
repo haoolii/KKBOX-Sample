@@ -10,7 +10,9 @@ export default new Vuex.Store({
       headers: {
         Authorization: `Bearer QHpj9vWob4AO4KizHubuwg==`
       }
-    }
+    },
+    YTSongTitle: '',
+    YTSongID: ''
   },
   mutations: {},
   actions: {},

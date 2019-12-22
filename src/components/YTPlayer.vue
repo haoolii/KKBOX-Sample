@@ -11,6 +11,9 @@
             allow="autoplay; encrypted-media"
             allowfullscreen
           ></iframe>
+          <iframe
+            src="https://widget.kkbox.com/v1/?id=GonWvutNzZWl9MKBmf&type=playlist&terr=TW}&lang=TC"
+          ></iframe>
         </div>
         <div class="col-4"></div>
       </div>
@@ -20,4 +23,4 @@
 <script>
 export default {};
 </script>
-<style lang="stylus" scoped></style>
+<style scoped></style>

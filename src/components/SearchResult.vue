@@ -5,7 +5,12 @@
     </div>
     <div class>
       <hr />
-      <div class="block" v-for="(item, index) in searchList" :key="item.description">
+      <div
+        class="block"
+        v-for="(item, index) in searchList"
+        :key="item.description"
+        @click="showYT(item.name)"
+      >
         <div class="rank">
           <p>{{ index + 1 }}</p>
         </div>
@@ -18,14 +23,22 @@
         </div>
       </div>
     </div>
+    <YTPlaySong v-if="show"></YTPlaySong>
   </section>
 </template>
 <script>
+import YTPlaySong from "../components/YTPlaySong.vue";
 export default {
+  components: {
+    YTPlaySong
+  },
   data() {
     return {
       text: "",
-      searchList: []
+      searchList: [],
+      show: false,
+      songTitle: "",
+      songID: ""
     };
   },
   methods: {
@@ -40,7 +53,34 @@ export default {
           console.log(res);
           this.searchList = res.data.tracks.data;
         });
+    },
+    getYTData() {
+      this.$http
+        .get(
+          `https://www.googleapis.com/youtube/v3/search?key=AIzaSyDaIXsoNNqYiDFfKQeV_tgBsDbk4uSJSHg&part=snippet&type=video&q=${this.$store.state.YTSongTitle}`
+        )
+        .then(res => {
+          console.log(res);
+          this.$store.state.YTSongID = res.data.items[0].id.videoId;
+          console.log(this.$store.state.YTSongID);
+        });
+    },
+    showYT(name) {
+      this.show = true;
+      this.$store.state.YTSongTitle = name;
+      console.log(this.$store.state.YTSongTitle);
+      this.getYTData();
     }
+  },
+  created() {
+    this.$http
+      .get(
+        "https://api.kkbox.com/v1.1/charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5",
+        this.$store.state.config
+      )
+      .then(res => {
+        this.rankList = res.data.data;
+      });
   },
   mounted() {
     this.getSearch();
@@ -52,7 +92,7 @@ export default {
 };
 </script>
 
-<style scoped >
+<style scoped>
 h2 {
   color: #e331a0;
 }
@@ -109,4 +149,3 @@ p {
   width: 400px;
 }
 </style>
-

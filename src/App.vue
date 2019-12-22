@@ -1,25 +1,27 @@
 <template>
   <div id="app">
     <appNav></appNav>
-
-    <appHeader></appHeader>
-    <rank></rank>
-    <playList></playList>
-    <styleList></styleList>
-    <modal></modal>
-    <appFooter></appFooter>
+    <router-view v-if="ready" />
   </div>
 </template>
 <script>
-import appNav from './views/Nav.vue';
-import playList from './components/PlayList.vue';
-import rank from './components/Rank.vue';
-import styleList from './components/StyleList.vue';
-import modal from './components/Modal.vue';
-import appHeader from './views/Header.vue';
-import appFooter from './views/Footer.vue';
+import appNav from "./views/Nav.vue";
+
 export default {
-  components: { modal, appNav, playList, styleList, rank, appHeader, appFooter }
+  components: { appNav },
+  data() {
+    return {
+      ready: true
+    };
+  },
+  methods: {
+    start() {
+      this.$router.push({ path: "" });
+    }
+  },
+  created() {
+    this.start();
+  }
 };
 </script>
 <style>

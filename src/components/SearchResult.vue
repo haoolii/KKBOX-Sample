@@ -1,11 +1,11 @@
 <template>
-  <section>
+  <section class="result">
     <div class="title">
-      <h2 class="font-weight-bold">最新歌曲</h2>
+      <h2 class="font-weight-bold">搜尋結果</h2>
     </div>
     <div class>
       <hr />
-      <div class="block" v-for="(item, index) in rankList" :key="item.description">
+      <div class="block" v-for="(item, index) in searchList" :key="item.description">
         <div class="rank">
           <p>{{ index + 1 }}</p>
         </div>
@@ -24,22 +24,35 @@
 export default {
   data() {
     return {
-      rankList: []
+      text: "",
+      searchList: []
     };
   },
-  created() {
-    this.$http
-      .get(
-        "https://api.kkbox.com/v1.1/charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5",
-        this.$store.state.config
-      )
-      .then(res => {
-        this.rankList = res.data.data;
-      });
+  methods: {
+    getSearch() {
+      this.text = this.$route.query.text;
+      this.$http
+        .get(
+          `https://api.kkbox.com/v1.1/search?q=${this.text}&type=track&limit=20&territory=TW`,
+          this.$store.state.config
+        )
+        .then(res => {
+          console.log(res);
+          this.searchList = res.data.tracks.data;
+        });
+    }
+  },
+  mounted() {
+    this.getSearch();
+  },
+  beforeRouteUpdate(to, from, next) {
+    next();
+    this.getSearch();
   }
 };
 </script>
-<style scoped>
+
+<style scoped >
 h2 {
   color: #e331a0;
 }
@@ -48,7 +61,8 @@ h2 {
 }
 section {
   width: 1120px;
-  margin: 40px auto 50px auto;
+  padding-bottom: 100px;
+  margin: 40px auto 0 auto;
 }
 .block {
   width: 1120px;
@@ -95,3 +109,4 @@ p {
   width: 400px;
 }
 </style>
+

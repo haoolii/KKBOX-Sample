@@ -1,20 +1,19 @@
 <template>
   <section>
     <div class="title">
-      <h2 class="  font-weight-bold">歌單類別</h2>
+      <h2 class="font-weight-bold">歌單類別</h2>
     </div>
     <div class="row">
       <div
-        class="card mb-2 "
+        class="card mb-2"
         style="width: 18rem;"
         v-for="item in categories"
         :key="item.description"
+        @click="goToYTPlayer"
       >
         <img :src="item.images[0].url" class="card-img-top" />
         <div class="card-body p-2">
-          <p class="card-text text-center ">
-            {{ item.title }}
-          </p>
+          <p class="card-text text-center">{{ item.title }}</p>
         </div>
       </div>
     </div>
@@ -24,14 +23,22 @@
 export default {
   data() {
     return {
-      categories: ''
+      categories: "",
+      songListID: ""
     };
   },
-
+  methods: {
+    goToYTPlayer() {
+      this.$router.push({
+        path: "/YTPlayer",
+        query: { songListID: this.songListID }
+      });
+    }
+  },
   created() {
     this.$http
       .get(
-        'https://api.kkbox.com/v1.1/featured-playlist-categories?territory=TW&limit=8',
+        "https://api.kkbox.com/v1.1/featured-playlist-categories?territory=TW&limit=8",
         this.$store.state.config
       )
       .then(res => {
@@ -72,8 +79,8 @@ section {
   font-weight: bold;
   font-size: 16px;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    'Microsoft JhengHei', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 hr {
   border-top: 1px solid black;

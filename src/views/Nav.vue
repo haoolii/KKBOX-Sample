@@ -1,8 +1,8 @@
 <template>
   <div class="nav">
-    <nav class="navbar navbar-expand-lg w-100 navbar-dark ">
+    <nav class="navbar navbar-expand-lg w-100 navbar-dark">
       <div class="container">
-        <a href="" style="text-decoration:none">KKBox Sample</a>
+        <router-link class="sample" :to="{name:'Home'}">KKBox Sample</router-link>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active"></li>
@@ -12,6 +12,7 @@
               class="form-control mr-sm-2"
               type="text"
               placeholder="請輸入關鍵字"
+              v-model.trim="text"
               @keydown.enter="search"
             />
           </div>
@@ -24,8 +25,18 @@
 export default {
   data() {
     return {
-      apiData: []
+      apiData: [],
+      text: ""
     };
+  },
+  methods: {
+    search() {
+      this.$router.push({
+        path: "/SearchResult",
+        query: { text: this.text }
+      });
+      this.text = "";
+    }
   }
 };
 </script>
@@ -33,12 +44,9 @@ export default {
 nav {
   background-color: #e331a0;
 }
-a {
+.sample {
   text-decoration: none;
   color: white;
   font-size: 23px;
-}
-a:hover {
-  color: white;
 }
 </style>

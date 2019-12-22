@@ -2,9 +2,7 @@
   <header>
     <div>
       <p>KKBox API Sample</p>
-      <a href="" data-toggle="modal" data-target="#exampleModalCenter"
-        >立即試聽</a
-      >
+      <a href data-toggle="modal" data-target="#exampleModalCenter">立即試聽</a>
 
       <div
         class="modal fade"
@@ -17,15 +15,10 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
             <div class="title">
-              <h5 class="">
-                立即試聽
-              </h5>
+              <h5 class>立即試聽</h5>
             </div>
 
-            <iframe
-              src="https://widget.kkbox.com/v1/?id=DZrC8m29ciOFY2JAm3&type=playlist"
-            >
-            </iframe>
+            <iframe src="https://widget.kkbox.com/v1/?id=DZrC8m29ciOFY2JAm3&type=playlist"></iframe>
           </div>
         </div>
       </div>
@@ -39,7 +32,7 @@ export default {};
 <style scoped>
 header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75)),
-    url('https://images.alphacoders.com/995/995676.jpg');
+    url("https://images.alphacoders.com/995/995676.jpg");
   height: 550px;
   background-size: cover;
   background-position: bottom;

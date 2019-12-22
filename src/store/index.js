@@ -8,7 +8,7 @@ export default new Vuex.Store({
     token: 'xueL7rjb0dGlD-GdJXx4GA==',
     config: {
       headers: {
-        Authorization: `Bearer xueL7rjb0dGlD-GdJXx4GA==`
+        Authorization: `Bearer QHpj9vWob4AO4KizHubuwg==`
       }
     }
   },

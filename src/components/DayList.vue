@@ -1,15 +1,15 @@
 <template>
   <section>
     <div class="title">
-      <h2 class="font-weight-bold">歌單類別</h2>
+      <h2 class="font-weight-bold">單曲日榜</h2>
     </div>
     <div class="row">
       <div
         class="card mb-2"
         style="width: 18rem;"
-        v-for="item in categories"
+        v-for="item in dayList"
         :key="item.description"
-        @click="goToYTPlayer"
+        @click="goToYTPlayer(item.id, item.title)"
       >
         <img :src="item.images[0].url" class="card-img-top" />
         <div class="card-body p-2">
@@ -23,26 +23,27 @@
 export default {
   data() {
     return {
-      categories: "",
-      songListID: ""
+      dayList: [],
+      songListID: ''
     };
   },
   methods: {
-    goToYTPlayer() {
+    goToYTPlayer(daylistID, daylistTitle) {
+      this.$store.state.YTDayListID = daylistID;
+      this.$store.state.YTDayListTitle = daylistTitle;
       this.$router.push({
-        path: "/YTPlayer",
-        query: { songListID: this.songListID }
+        path: '/YTPlayer'
       });
     }
   },
   created() {
     this.$http
       .get(
-        "https://api.kkbox.com/v1.1/featured-playlist-categories?territory=TW&limit=8",
+        'https://api.kkbox.com/v1.1/charts?territory=TW',
         this.$store.state.config
       )
       .then(res => {
-        this.categories = res.data.data;
+        this.dayList = res.data.data.slice(1, 5);
       });
   }
 };
@@ -79,8 +80,8 @@ section {
   font-weight: bold;
   font-size: 16px;
   color: white;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-    "Microsoft JhengHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    'Microsoft JhengHei', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 hr {
   border-top: 1px solid black;

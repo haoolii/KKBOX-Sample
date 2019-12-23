@@ -123,7 +123,4 @@ p {
   margin-bottom: 0;
   color: white;
 }
-.modal-content {
-  width: 400px;
-}
 </style>

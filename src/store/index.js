@@ -12,7 +12,9 @@ export default new Vuex.Store({
       }
     },
     YTSongTitle: '',
-    YTSongID: ''
+    YTSongID: '',
+    YTDayListTitle: '',
+    YTDayListID: []
   },
   mutations: {},
   actions: {},

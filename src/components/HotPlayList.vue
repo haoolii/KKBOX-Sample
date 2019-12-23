@@ -9,6 +9,7 @@
         style="width: 18rem;"
         v-for="item in hotList"
         :key="item.description"
+        @click="goToYTPlayer(item.id, item.title)"
       >
         <img :src="item.images[0].url" class="card-img-top" />
         <div class="card-body p-2">
@@ -26,6 +27,15 @@ export default {
     return {
       hotList: ''
     };
+  },
+  methods: {
+    goToYTPlayer(daylistID, daylistTitle) {
+      this.$store.state.YTDayListID = daylistID;
+      this.$store.state.YTDayListTitle = daylistTitle;
+      this.$router.push({
+        path: '/YTPlayer'
+      });
+    }
   },
   created() {
     this.$http

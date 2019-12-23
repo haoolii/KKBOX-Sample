@@ -5,7 +5,7 @@
   </div>
 </template>
 <script>
-import appNav from "./views/Nav.vue";
+import appNav from './views/Nav.vue';
 
 export default {
   components: { appNav },
@@ -16,7 +16,7 @@ export default {
   },
   methods: {
     start() {
-      this.$router.push({ path: "" });
+      this.$router.push({ path: '' });
     }
   },
   created() {
@@ -27,5 +27,6 @@ export default {
 <style>
 #app {
   background-color: #080a1e;
+  overflow-x: hidden;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <header>
     <div>
-      <p>KKBox API Sample</p>
+      <p>KKBOX API Sample</p>
       <a href data-toggle="modal" data-target="#exampleModalCenter">立即試聽</a>
     </div>
     <div
@@ -34,7 +34,7 @@ export default {};
 <style scoped>
 header {
   background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75)),
-    url("https://images.alphacoders.com/995/995676.jpg");
+    url('https://images.alphacoders.com/995/995676.jpg');
   height: 550px;
   background-size: cover;
   background-position: bottom;

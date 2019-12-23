@@ -2,7 +2,9 @@
   <div class="nav">
     <nav class="navbar navbar-expand-lg w-100 navbar-dark">
       <div class="container">
-        <router-link class="sample" :to="{name:'Home'}">KKBox Sample</router-link>
+        <router-link class="sample" :to="{ name: 'Home' }"
+          >KKBOX Sample</router-link
+        >
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active"></li>
@@ -26,16 +28,16 @@ export default {
   data() {
     return {
       apiData: [],
-      text: ""
+      text: ''
     };
   },
   methods: {
     search() {
       this.$router.push({
-        path: "/SearchResult",
+        path: '/SearchResult',
         query: { text: this.text }
       });
-      this.text = "";
+      this.text = '';
     }
   }
 };

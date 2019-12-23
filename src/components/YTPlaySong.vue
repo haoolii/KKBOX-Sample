@@ -1,11 +1,5 @@
 <template>
   <div>
-    <!-- <iframe
-      id="player"
-      type="text/html"
-      :src="`http://www.youtube.com/embed/${this.songID}`"
-      frameborder="0"
-    ></iframe> -->
     <object type="text/html" :data="ytlink"></object>
   </div>
 </template>

@@ -2,22 +2,25 @@
   <div class="home">
     <appHeader></appHeader>
     <rank></rank>
-    <playList></playList>
-    <styleList></styleList>
+    <hotPlayList></hotPlayList>
+    <dayList></dayList>
     <appFooter></appFooter>
   </div>
 </template>
 <script>
-import playList from "../components/PlayList";
-import rank from "../components/Rank.vue";
-import styleList from "../components/StyleList.vue";
-import appHeader from "../views/Header.vue";
-import appFooter from "../views/Footer.vue";
+import hotPlayList from '../components/HotPlayList';
+import rank from '../components/Rank.vue';
+import dayList from '../components/DayList.vue';
+import appHeader from '../views/Header.vue';
+import appFooter from '../views/Footer.vue';
 export default {
-  components: { playList, styleList, rank, appHeader, appFooter }
+  components: { hotPlayList, dayList, rank, appHeader, appFooter },
+  created() {
+    this.$store.state.YTSongID = '';
+  }
 };
 </script>
-<style  scoped>
+<style scoped>
 .home {
   background-color: #080a1e;
 }

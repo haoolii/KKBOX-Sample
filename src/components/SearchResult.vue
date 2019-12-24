@@ -28,7 +28,7 @@
 </template>
 <script>
 import YTPlaySong from '../components/YTPlaySong.vue';
-import mapMutaions from 'vuex';
+import { mapMutations } from 'vuex';
 export default {
   components: {
     YTPlaySong
@@ -42,7 +42,7 @@ export default {
     };
   },
   methods: {
-    ...mapMutaions(['showYT', 'getYTData']),
+    ...mapMutations(['showYT', 'getYTData']),
     getSearch() {
       this.text = this.$route.query.text;
       this.$http

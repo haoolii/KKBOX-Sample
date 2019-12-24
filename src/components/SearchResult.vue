@@ -9,7 +9,7 @@
         class="block"
         v-for="(item, index) in searchList"
         :key="item.description"
-        @click="showYT(item.name)"
+        @click="showYT(item)"
       >
         <div class="rank">
           <p>{{ index + 1 }}</p>
@@ -23,25 +23,26 @@
         </div>
       </div>
     </div>
-    <YTPlaySong v-if="show"></YTPlaySong>
+    <YTPlaySong v-if="this.$store.state.YTSongShow"></YTPlaySong>
   </section>
 </template>
 <script>
-import YTPlaySong from "../components/YTPlaySong.vue";
+import YTPlaySong from '../components/YTPlaySong.vue';
+import mapMutaions from 'vuex';
 export default {
   components: {
     YTPlaySong
   },
   data() {
     return {
-      text: "",
+      text: '',
       searchList: [],
-      show: false,
-      songTitle: "",
-      songID: ""
+      songTitle: '',
+      songID: ''
     };
   },
   methods: {
+    ...mapMutaions(['showYT', 'getYTData']),
     getSearch() {
       this.text = this.$route.query.text;
       this.$http
@@ -64,18 +65,19 @@ export default {
           this.$store.state.YTSongID = res.data.items[0].id.videoId;
           console.log(this.$store.state.YTSongID);
         });
-    },
-    showYT(name) {
-      this.show = true;
-      this.$store.state.YTSongTitle = name;
-      console.log(this.$store.state.YTSongTitle);
-      this.getYTData();
     }
+
+    // showYT(name) {
+    //   this.$store.state.YTSongShow = true;
+    //   this.$store.state.YTSongTitle = name;
+    //   console.log(this.$store.state.YTSongTitle);
+    //   this.getYTData();
+    // }
   },
   created() {
     this.$http
       .get(
-        "https://api.kkbox.com/v1.1/charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5",
+        'https://api.kkbox.com/v1.1/charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5',
         this.$store.state.config
       )
       .then(res => {

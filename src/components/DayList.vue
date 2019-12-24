@@ -44,6 +44,7 @@ export default {
       )
       .then(res => {
         this.dayList = res.data.data.slice(1, 5);
+        console.log(res);
       });
   }
 };

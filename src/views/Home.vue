@@ -17,6 +17,7 @@ export default {
   components: { hotPlayList, dayList, rank, appHeader, appFooter },
   created() {
     this.$store.state.YTSongID = '';
+    this.$store.state.YTSongShow = false;
   }
 };
 </script>

@@ -32,6 +32,7 @@ export default {
     };
   },
   methods: {
+    //跳入SearchResult頁面
     search() {
       this.$router.push({
         path: '/SearchResult',

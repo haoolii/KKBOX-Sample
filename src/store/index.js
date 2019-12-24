@@ -11,12 +11,22 @@ export default new Vuex.Store({
         Authorization: `Bearer QHpj9vWob4AO4KizHubuwg==`
       }
     },
+    YTSongShow: false,
     YTSongTitle: '',
     YTSongID: '',
     YTDayListTitle: '',
     YTDayListID: []
   },
-  mutations: {},
+  getters: {},
+  mutations: {
+    showYT(state, item) {
+      state.YTSongShow = true;
+      state.YTSongTitle = item.name;
+
+      // this.getYTData();
+    },
+    getYTData() {}
+  },
   actions: {},
   modules: {}
 });

@@ -23,11 +23,11 @@
         </div>
       </div>
     </div>
-    <YTPlaySong v-if="show"></YTPlaySong>
+    <YTPlaySong v-if="this.$store.state.YTSongShow"></YTPlaySong>
   </section>
 </template>
 <script>
-import YTPlaySong from "../components/YTPlaySong.vue";
+import YTPlaySong from '../components/YTPlaySong.vue';
 export default {
   components: {
     YTPlaySong
@@ -35,9 +35,8 @@ export default {
   data() {
     return {
       rankList: [],
-      show: false,
-      songTitle: "",
-      songID: ""
+      songTitle: '',
+      songID: ''
     };
   },
   methods: {
@@ -47,13 +46,11 @@ export default {
           `https://www.googleapis.com/youtube/v3/search?key=AIzaSyDaIXsoNNqYiDFfKQeV_tgBsDbk4uSJSHg&part=snippet&type=video&q=${this.$store.state.YTSongTitle}`
         )
         .then(res => {
-          console.log(res);
           this.$store.state.YTSongID = res.data.items[0].id.videoId;
-          console.log(this.$store.state.YTSongID);
         });
     },
     showYT(name) {
-      this.show = true;
+      this.$store.state.YTSongShow = true;
       this.$store.state.YTSongTitle = name;
       console.log(this.$store.state.YTSongTitle);
       this.getYTData();
@@ -62,7 +59,7 @@ export default {
   created() {
     this.$http
       .get(
-        "https://api.kkbox.com/v1.1/charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5",
+        'https://api.kkbox.com/v1.1/charts/LZPhK2EyYzN15dU-PT/tracks?territory=TW&limit=5',
         this.$store.state.config
       )
       .then(res => {
